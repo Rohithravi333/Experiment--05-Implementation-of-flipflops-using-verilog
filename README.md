@@ -103,26 +103,38 @@ Q(t+1)=T′Q(t)+TQ(t)′
 
 ### Procedure
 /* write all the steps invloved */
+1.Using nand gates and wires construct sr flip flop.
+
+2.Repeat same steps to construct JK,D,T flipflops.
+
+3.Find Rtl logic and timing diagram for all flipflops.
+
+4.end the program.
 
 
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: rohith r
+RegisterNumber:  212222230121
 */
-
-
-
-
-
-
+```
+module sr (q,qbar,s,r,clk);
+input s,r,clk;
+output q,qbar;
+wire nand1_out;
+wire nand2_out;
+nand(nand1_out,clk,s);
+nand(nand2_out,clk,r);
+nand(q,nand1_out,qbar);
+nand(qbar,nand2_out,q);
+endmodule
+```
 ### RTL LOGIC FOR FLIPFLOPS 
 
 
-
-
+![5 1](https://github.com/Rohithravi333/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119394126/b4d3a362-8c9a-48f1-a83d-3fc8000322d0)
 
 
 
@@ -131,10 +143,62 @@ RegisterNumber:
 ### TIMING DIGRAMS FOR FLIP FLOPS 
 
 
+![5 2](https://github.com/Rohithravi333/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119394126/6fb6f3d6-5880-4ed6-a909-0524260deef7)
 
+### PROGRAM 2:
+```
+module jk(q,qbar,k,j,clk);
+input j,k,clk;
+output q,qbar;
+wire nand1_out;
+wire nand2_out;
+nand(nand1_out,j,clk,qbar);
+nand(nand2_out,k,clk,q);
+nand(q,nand1_out,qbar,qbar);
+nand(qbar,nand2_out,q);
+endmodule
+```
+### RTL LOGIC FOR FLIPFLOPS
+![5 3](https://github.com/Rohithravi333/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119394126/1f10b90c-a148-4adc-85cf-3f153a5667cf)
 
+### TIMING DIGRAMS FOR FLIP FLOPS
+![5 4](https://github.com/Rohithravi333/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119394126/6cd998ce-73ed-4c97-8d48-8f80b1047df2)
 
+### PROGRAM 3:
 
+module d(q,qbar,d1,clk);
+input d1,clk;
+output q,qbar;
+wire n1;
+wire n2;
+not(x,d1);
+nand(n1,clk,d1);
+nand(n2,clk,x);
+nand(q,n2,qbar);
+nand(qbar,n1,q);
+endmodule 
+
+### RTL LOGIC FOR FLIPFLOPS
+![5 5](https://github.com/Rohithravi333/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119394126/8e77456e-c0c7-4d8b-9bc7-8b769fe5a34e)
+### TIMING DIGRAMS FOR FLIP FLOPS
+![5 6](https://github.com/Rohithravi333/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119394126/b6355581-3eca-4509-a878-0da3e86a50fb)
+### PROGRAM 4
+```
+module tff(t,qbar,q,clk);
+input t,clk;
+output q,qbar;
+wire n1,n2;
+nand(n1,t,clk,qbar);
+nand(n2,clk,t,q);
+nand(q,n1,qbar);
+nand(qbar,n2,q);
+endmodule
+```
+### RTL LOGIC FOR FLIPFLOPS
+![5 7](https://github.com/Rohithravi333/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119394126/bc9139be-94ea-4550-946f-18ee9e1ff1e8)
+### TIMING DIGRAMS FOR FLIP FLOPS
+![5 8](https://github.com/Rohithravi333/Experiment--05-Implementation-of-flipflops-using-verilog/assets/119394126/50c9ffe1-0d3b-4e2b-a5a5-94108649264d)
 
 
 ### RESULTS 
+Thus implementation of SR,JK,D and T flipflops using nand gates are done sucessfully.
